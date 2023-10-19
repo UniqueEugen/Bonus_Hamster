@@ -1,23 +1,26 @@
 package animals.classes.actions;
 
 import animals.classes.entities.Hamster;
-import myLibrary.console.Console;
-import service.Service;
+import myLibrary.console.Console;//Импорт класса, реализующего консольный вывод. Написан мной
+import service.Service;//Импорт класса, реализующего сервисные действия
 
-public class YourHamster extends Hamster {
-    private String name;
-    private String kind;
-    private String master;
+public class YourHamster extends Hamster {//класс-представление хомяка и его действий.
+    // Наследует abstract класс представления хомяков.
+    //Переопределяет абстрактные методы, которые должен реализовывать класс Hamster
+    private String name;//имя хомяка
+    private String kind;//вид хомяка
+    private String master;//имя хозяина хомяка
     public YourHamster(){
         super();
-    }
+    }//дефолтный конструктор, создающий пустой объект
     public YourHamster(String name, String kind, String master, String color, int age, boolean sex){
-        super(color,age,sex);
+        //конструктор создающий объект по заданным критериям
+        super(color,age,sex);//вызов конструктора родительского класса
         this.kind =kind;
         this.master=master;
         this.name=name;
     }
-    public YourHamster(YourHamster hamster){
+    public YourHamster(YourHamster hamster){//конструктор создания объекта по существующему объекту
         super(hamster);
         this.name=hamster.name;
         this.master=hamster.master;
@@ -51,7 +54,7 @@ public class YourHamster extends Hamster {
     }
 
     @Override
-    public void move() {
+    public void move() {//Переопределение метода двигаться
         switch (Service.randInt(4)){//узнаем действия хомяка
             case 1:
                 Console.log("Хомячок ворочается на спинке");
@@ -69,7 +72,7 @@ public class YourHamster extends Hamster {
     }
 
     @Override
-    public void eat() {
+    public void eat() {//Переопределение метода кушать
         switch (Service.randInt(4)){
             case 1:
                 Console.log("Хомячок ест травку");
@@ -87,7 +90,7 @@ public class YourHamster extends Hamster {
     }
 
     @Override
-    public void run() {
+    public void run() {//Переопределение метода бегать
         switch (Service.randInt(5)){
             case 1:
                 Console.log("Хомячок сбежал! Быстрее лови его!");
@@ -108,7 +111,7 @@ public class YourHamster extends Hamster {
     }
 
     @Override
-    public void hide() {
+    public void hide() {//Переопределение метода прятаться
         switch (Service.randInt(3)){
             case 1:
                 Console.log("Хомячок прячется от тебя. Ты его обидел(");
@@ -124,7 +127,7 @@ public class YourHamster extends Hamster {
 
     @Override
     public void poop() {
-        switch (Service.randInt(3)){
+        switch (Service.randInt(3)){//преопределение метода poop
             case 1:
                 Console.log("Пора менять подстилку в клетке!");
                 break;
@@ -138,7 +141,7 @@ public class YourHamster extends Hamster {
     }
 
     @Override
-    public void GiveBirth() {
+    public void GiveBirth() {//Переопределение метода рожать
         if(!isSex()){
             switch (Service.randInt(3)){
                 case 1:
@@ -157,7 +160,7 @@ public class YourHamster extends Hamster {
         }
     }
     @Override
-    public String toString(){
+    public String toString(){//переопределение метода toString(). Создает и выводит информацию о хомяке
         Console.log("Хозяин: "+ getMaster()+ " имя хомячка: " +getName()+" возраст: "+super.getAge()+" пол: "+
                 (super.isSex()? " мужской ": " женский ")+ " вид хомячка: "+ getKind()+" цвет хомячка: "+super.getColor());
         return  null;

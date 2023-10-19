@@ -1,21 +1,20 @@
 package animals.classes.entities;
 
 import animals.interfaces.mammals.Mammal;
-import myLibrary.console.Console;
-import service.Service;
 
-public abstract class Hamster implements Mammal {
-    private String color;
-    private int age;
+//класс является абстрактным, так как он реализует интерфейс Mammal, но не переопределяет методы
+public abstract class Hamster extends Animal implements Mammal {//POJO-class для всех хомяков
+    private String color;//цвет хомяка
+    private int age;//возраст хомяка
     private boolean sex; //true --Male, false--female
 
-    public Hamster(){}
-    public Hamster(Hamster hamster){
+    public Hamster(){}//дефолтный конструктор
+    public Hamster(Hamster hamster){//конструктор для создания нового объекта по существующему
         this.color=hamster.color;
         this.age=hamster.age;
         this.sex=hamster.sex;
     }
-    public Hamster(String color, int age, boolean sex){
+    public Hamster(String color, int age, boolean sex){//Конструктор для создания объекта по заданным параметрам
         this.color=color;
         this.age=age;
         this.sex=sex;

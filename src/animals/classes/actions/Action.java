@@ -1,11 +1,13 @@
 package animals.classes.actions;
 
+import animals.classes.entities.Hamster;
 import myLibrary.console.Console;
 import service.Service;
 
 public class Action {
-    public static int act(YourHamster hamster) {
-        switch (Service.randInt(6)) {
+    public static int act(Hamster hamster) {//Статический метод действие,
+        // реализующее логику действий животного
+        switch (Service.randInt(6)) {//Переопределение метода кушать
             case 1:
                 hamster.hide();
                 break;
